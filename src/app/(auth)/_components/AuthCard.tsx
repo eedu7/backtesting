@@ -12,14 +12,14 @@ interface AuthCardProps {
 
 export const AuthCard = ({ title, description, children }: AuthCardProps) => {
     return (
-        <Card className="w-[350px]">
+        <Card className="w-[310px] md:w-[350px] lg:w-[370]">
             <CardHeader>
                 <CardTitle>{title}</CardTitle>
                 <CardDescription>{description}</CardDescription>
             </CardHeader>
             <CardContent>{children}</CardContent>
 
-            <CardFooter className="flex-col space-y-2">
+            <CardFooter className="flex-col space-y-4">
                 <Separator />
                 <SocialLogin />
             </CardFooter>

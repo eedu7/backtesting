@@ -5,6 +5,7 @@ import { useAuth } from "@/app/(auth)/_hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { PasswordInput } from "@/app/(auth)/_components/PasswordInput";
 
 export const RegisterForm = () => {
     const { signUp } = useAuth();
@@ -36,7 +37,7 @@ export const RegisterForm = () => {
             </div>
             <div className="space-y-2">
                 <Label htmlFor="password">Password:</Label>
-                <Input
+                <PasswordInput
                     id="password"
                     name="password"
                     type="password"
