@@ -14,49 +14,49 @@ import {
 
 type Item = {
     title: string;
-    url: string;
+    url?: string;
     icon: LucideIcon;
 };
 
 export const sidebarItems: Item[] = [
     {
         title: "Dashboard",
-        url: "#",
+        url: "/dashboard",
         icon: LayoutDashboard,
     },
     {
         title: "Reports",
-        url: "#",
+        url: "/dashboard/reports",
         icon: BarChart3,
     },
     {
         title: "Journal",
-        url: "#",
+        url: "/dashboard/journal",
         icon: Notebook,
     },
     {
         title: "Trades",
-        url: "#",
+        url: "/dashboard/trades",
         icon: Search,
     },
     {
         title: "Playlists",
-        url: "#",
+        url: "/dashboard/playlists",
         icon: ListMusic,
     },
     {
         title: "Market Replay",
-        url: "#",
+        url: "/dashboard/market-replay",
         icon: RefreshCw,
     },
     {
         title: "Strategies",
-        url: "#",
+        url: "/dashboard/strategies",
         icon: BrainCog,
     },
     {
         title: "Trading Plan",
-        url: "#",
+        url: "/dashboard/trading-plan",
         icon: ClipboardList,
     },
 ];
@@ -64,12 +64,12 @@ export const sidebarItems: Item[] = [
 export const sidebarFooterItems: Item[] = [
     {
         title: "Add trades",
-        url: "#",
+        url: "/dashboard/add-trades",
         icon: PlusCircle,
     },
     {
         title: "Configuration",
-        url: "#",
+        url: "/dashboard/configuration",
         icon: Settings,
     },
 ];
