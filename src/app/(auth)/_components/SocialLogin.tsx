@@ -1,3 +1,5 @@
+"use client";
+
 import { RiFacebookFill, RiGithubFill, RiGoogleFill, RiTwitterXFill } from "@remixicon/react";
 import { toast } from "sonner";
 
