@@ -7,6 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { supabase } from "@/lib/supabaseClient";
 
 export default function LoginPage() {
+
     return (
         <div className="h-screen w-screen flex justify-center items-center bg-zinc-300">
             <Card>

@@ -2,11 +2,10 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-
-import { createClient } from "@/utils/supabase/server";
+import { supabase } from "@/lib/supabaseClient";
+import { toast } from "sonner";
 
 export async function login(formData: FormData) {
-    const supabase = await createClient();
 
     // type-casting here for convenience
     // in practice, you should validate your inputs
@@ -18,7 +17,8 @@ export async function login(formData: FormData) {
     const { error } = await supabase.auth.signInWithPassword(data);
 
     if (error) {
-        redirect("/error");
+        toast(error.message);
+
     }
 
     revalidatePath("/", "layout");
@@ -26,7 +26,6 @@ export async function login(formData: FormData) {
 }
 
 export async function signup(formData: FormData) {
-    const supabase = await createClient();
 
     // type-casting here for convenience
     // in practice, you should validate your inputs
@@ -38,7 +37,8 @@ export async function signup(formData: FormData) {
     const { error } = await supabase.auth.signUp(data);
 
     if (error) {
-        redirect("/error");
+        toast(error.message);
+
     }
 
     revalidatePath("/", "layout");
