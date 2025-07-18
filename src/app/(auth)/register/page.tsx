@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 import { AuthCard } from "@/app/(auth)/_components/AuthCard";
-import { LoginForm } from "@/app/(auth)/_components/LoginForm";
+import { RegisterForm } from "@/app/(auth)/_components/RegisterForm";
 
 export const metadata: Metadata = {
     title: "Sign Up | Backtest Pro",
@@ -15,7 +15,7 @@ export default function RegisterPage() {
             title="Create an Account"
             description="Join Backtest Pro to start backtesting your trading strategies with real historical data."
         >
-            <LoginForm />
+            <RegisterForm />
         </AuthCard>
     );
 }

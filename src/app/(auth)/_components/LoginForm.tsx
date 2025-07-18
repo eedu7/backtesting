@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 import { useAuth } from "@/app/(auth)/_hooks/useAuth";
 
 import { Button } from "@/components/ui/button";
@@ -26,26 +28,48 @@ export const LoginForm = () => {
             className="space-y-8"
             onSubmit={onSubmit}
         >
-            <div className="space-y-2">
-                <Label htmlFor="email">Email:</Label>
-                <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    required
-                />
+            <div className="space-y-6">
+                <div className="space-y-2">
+                    <Label htmlFor="email">Email:</Label>
+                    <Input
+                        id="email"
+                        name="email"
+                        type="email"
+                        required
+                    />
+                </div>
+                <div className="space-y-2">
+                    <Label htmlFor="password">Password:</Label>
+                    <PasswordInput
+                        id="password"
+                        name="password"
+                        type="password"
+                        required
+                    />
+                </div>
             </div>
-            <div className="space-y-2">
-                <Label htmlFor="password">Password:</Label>
-                <PasswordInput
-                    id="password"
-                    name="password"
-                    type="password"
-                    required
-                />
-            </div>
-            <div className="flex justify-between gap-4">
-                <Button className="flex-1 cursor-pointer">{signIn.isPending ? "Signing in..." : "Sign in"}</Button>
+            <div className="space-y-4 text-xs">
+                <div className="flex justify-between items-center">
+                    <div className="flex space-x-1">
+                        <p>New user?</p>
+
+                        <Link
+                            href="/register"
+                            className="text-primary font-bold underline"
+                        >
+                            Create an account
+                        </Link>
+                    </div>
+                    <Link
+                        href="#"
+                        className="font-bold underline"
+                    >
+                        Forgot password?
+                    </Link>
+                </div>
+                <div className="flex justify-between gap-4">
+                    <Button className="flex-1 cursor-pointer">{signIn.isPending ? "Signing in..." : "Sign in"}</Button>
+                </div>
             </div>
         </form>
     );
