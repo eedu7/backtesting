@@ -1,7 +1,5 @@
 import React from "react";
 
 export default function AddTradesPage() {
-    return (
-        <div>AddTradesPage</div>
-    );
+    return <div>AddTradesPage</div>;
 }

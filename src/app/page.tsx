@@ -19,16 +19,16 @@ const merriweather = Merriweather({
 
 export default function HomePage() {
     return (
-        <div className="flex flex-col items-center justify-center w-screen h-screen text-center px-4">
+        <div className="flex h-screen w-screen flex-col items-center justify-center px-4 text-center">
             <h1
                 className={cn(
-                    "text-2xl md:text-5xl font-bold tracking-tight text-gray-900 dark:text-white",
+                    "text-2xl font-bold tracking-tight text-gray-900 md:text-5xl dark:text-white",
                     poppins.className,
                 )}
             >
                 Welcome to Backtest Pro
             </h1>
-            <p className={cn("mt-4 md:text-lg text-gray-600 dark:text-gray-300 max-w-xl", merriweather.className)}>
+            <p className={cn("mt-4 max-w-xl text-gray-600 md:text-lg dark:text-gray-300", merriweather.className)}>
                 Analyze, simulate, and optimize your trading strategies with historical data before risking real
                 capital. Make smarter trading decisions with powerful backtesting tools.
             </p>
