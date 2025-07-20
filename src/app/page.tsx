@@ -1,4 +1,7 @@
 import { Merriweather, Poppins } from "next/font/google";
+import Link from "next/link";
+
+import { Button } from "@/components/ui/button";
 
 import { cn } from "@/lib/utils";
 
@@ -14,7 +17,7 @@ const merriweather = Merriweather({
     variable: "--font-merriweather",
 });
 
-export default function Home() {
+export default function HomePage() {
     return (
         <div className="flex flex-col items-center justify-center w-screen h-screen text-center px-4">
             <h1
@@ -29,6 +32,11 @@ export default function Home() {
                 Analyze, simulate, and optimize your trading strategies with historical data before risking real
                 capital. Make smarter trading decisions with powerful backtesting tools.
             </p>
+            <div className="mt-8">
+                <Button asChild>
+                    <Link href="/dashboard">Dashboard</Link>
+                </Button>
+            </div>
         </div>
     );
 }

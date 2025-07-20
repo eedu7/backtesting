@@ -2,13 +2,16 @@ import React from "react";
 
 import { DashboardSidebar } from "@/modules/dashboard/components/DashboardSidebar";
 
-import { SidebarProvider } from "@/components/ui/sidebar";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
     return (
         <SidebarProvider>
             <DashboardSidebar />
-            <main>{children}</main>
+            <div className="flex flex-col min-h-screen">
+                <SidebarTrigger />
+                <main className="flex-1 mx-8 my-4">{children}</main>
+            </div>
         </SidebarProvider>
     );
 }

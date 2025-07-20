@@ -15,7 +15,7 @@ import {
 
 export const DashboardSidebar = () => {
     return (
-        <Sidebar>
+        <Sidebar collapsible="icon">
             <SidebarContent>
                 <SidebarGroup>
                     <SidebarGroupContent>
