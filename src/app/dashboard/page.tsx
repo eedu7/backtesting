@@ -1,7 +1,10 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Metadata } from "next";
 
-import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
+import { CardSkeleton } from "@/modules/dashboard/components/CardSkeleton";
+import { WinRatioBarChart } from "@/modules/dashboard/components/WinRatioBarChart";
+import { WinRatioLineChart } from "@/modules/dashboard/components/WinRatioLineChart";
+import { WinRatioPieChart } from "@/modules/dashboard/components/WinRatioPieChart";
 
 export const metadata: Metadata = {
     title: "Dashboard | Backtest Pro",
@@ -10,21 +13,11 @@ export const metadata: Metadata = {
 
 export default function DashboardPage() {
     return (
-        <div className="grid w-full grid-cols-4 gap-4 border">
-            <DashboardCard />
-            <DashboardCard />
-            <DashboardCard />
-            <DashboardCard />
+        <div className="grid w-full grid-cols-2 gap-4 lg:grid-cols-4">
+            <WinRatioPieChart />
+            <WinRatioBarChart />
+            <WinRatioLineChart />
+            <CardSkeleton />
         </div>
     );
 }
-
-const DashboardCard = () => {
-    return (
-        <Card>
-            <CardHeader></CardHeader>
-            <CardContent></CardContent>
-            <CardFooter></CardFooter>
-        </Card>
-    );
-};
