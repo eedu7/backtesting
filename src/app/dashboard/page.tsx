@@ -1,10 +1,10 @@
-import React, { Suspense } from "react";
+import React from "react";
 import { Metadata } from "next";
 
-import { CardSkeleton } from "@/modules/dashboard/components/CardSkeleton";
-import { WinRatioBarChart } from "@/modules/dashboard/components/WinRatioBarChart";
-import { WinRatioLineChart } from "@/modules/dashboard/components/WinRatioLineChart";
-import { WinRatioPieChart } from "@/modules/dashboard/components/WinRatioPieChart";
+import { CardSkeleton } from "@/modules/dashboard/layout/components/CardSkeleton";
+import { WinRatioBarChart } from "@/modules/dashboard/layout/components/WinRatioBarChart";
+import { WinRatioLineChart } from "@/modules/dashboard/layout/components/WinRatioLineChart";
+import { WinRatioPieChart } from "@/modules/dashboard/layout/components/WinRatioPieChart";
 
 export const metadata: Metadata = {
     title: "Dashboard | Backtest Pro",
