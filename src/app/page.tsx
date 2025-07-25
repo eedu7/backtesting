@@ -5,12 +5,14 @@ import { Button } from "@/components/ui/button";
 
 import { cn } from "@/lib/utils";
 
+// TODO: Remove the fonts
 const poppins = Poppins({
     subsets: ["latin"],
     weight: "700",
     variable: "--font-poppins",
 });
 
+// TODO: Remove the fonts
 const merriweather = Merriweather({
     subsets: ["latin"],
     weight: ["400"],
