@@ -33,7 +33,7 @@ export const MainSidebarItems = () => {
                                 className={cn(item.disable && "text-muted-foreground")}
                             >
                                 <Link
-                                    href={item.url}
+                                    href={item.disable ? "#" : item.url}
                                     prefetch={false}
                                 >
                                     <item.icon />
