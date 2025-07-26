@@ -14,10 +14,11 @@ import {
 
 type Item = {
     title: string;
-    url?: string;
+    url: string;
     icon: LucideIcon;
+    disable?: boolean;
 };
-
+// TODO: Add proper url
 export const sidebarItems: Item[] = [
     {
         title: "Dashboard",
@@ -26,7 +27,9 @@ export const sidebarItems: Item[] = [
     },
     {
         title: "Reports",
-        url: "/dashboard/reports",
+        url: "#",
+        // url: "/dashboard/reports",
+        disable: true,
         icon: BarChart3,
     },
     {
@@ -36,40 +39,56 @@ export const sidebarItems: Item[] = [
     },
     {
         title: "Trades",
-        url: "/dashboard/trades",
+        // url: "/dashboard/trades",
+        url: "#",
         icon: Search,
+        disable: true,
     },
     {
         title: "Playlists",
-        url: "/dashboard/playlists",
+        // url: "/dashboard/playlists",
         icon: ListMusic,
+        url: "#",
+        disable: true,
     },
     {
         title: "Market Replay",
-        url: "/dashboard/market-replay",
+        // url: "/dashboard/market-replay",
+        url: "#",
         icon: RefreshCw,
+        disable: true,
     },
     {
         title: "Strategies",
-        url: "/dashboard/strategies",
+        // url: "/dashboard/strategies",
+        url: "#",
         icon: BrainCog,
+        disable: true,
     },
     {
         title: "Trading Plan",
-        url: "/dashboard/trading-plan",
+        // url: "/dashboard/trading-plan",
+        url: "#",
         icon: ClipboardList,
+        disable: true,
     },
 ];
 
-export const sidebarFooterItems: Item[] = [
+type SidebarFooterItem = {
+    title: string;
+    icon: LucideIcon;
+    disable?: boolean;
+};
+
+export const sidebarFooterItems: SidebarFooterItem[] = [
     {
         title: "Add trades",
-        url: "/dashboard/add-trades",
         icon: PlusCircle,
+        disable: true,
     },
     {
         title: "Configuration",
-        url: "/dashboard/configuration",
         icon: Settings,
+        disable: true,
     },
 ];

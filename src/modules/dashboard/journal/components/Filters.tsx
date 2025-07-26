@@ -34,7 +34,7 @@ export const Filters = () => {
                 >
                     <div className="flex w-full items-center gap-1 md:gap-2">
                         <Calendar />
-                        <span className="md:text-md text-xs">Timeframe</span>
+                        <span className="text-xs md:text-sm">Timeframe</span>
                     </div>
                 </Button>
                 <Button
@@ -43,7 +43,7 @@ export const Filters = () => {
                 >
                     <div className="flex w-full items-center gap-1 md:gap-2">
                         <Funnel />
-                        <span className="md:text-md text-xs">Advance Search</span>
+                        <span className="text-xs md:text-sm">Advance Search</span>
                     </div>
                 </Button>
                 <Button
@@ -52,7 +52,7 @@ export const Filters = () => {
                 >
                     <div className="flex w-full items-center gap-1 md:gap-2">
                         <Trash />
-                        <span className="md:text-md text-xs">Clear</span>
+                        <span className="text-xs md:text-sm">Clear</span>
                     </div>
                 </Button>
             </div>

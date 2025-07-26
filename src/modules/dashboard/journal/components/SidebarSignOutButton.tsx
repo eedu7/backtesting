@@ -9,11 +9,12 @@ import { SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar";
 
 export const SidebarSignOutButton = () => {
     const { signOut } = useClerk();
+
     return (
         <SidebarMenuItem>
             <SidebarMenuButton onClick={() => signOut()}>
                 <LogOut />
-                Sign
+                Sign Out
             </SidebarMenuButton>
         </SidebarMenuItem>
     );
