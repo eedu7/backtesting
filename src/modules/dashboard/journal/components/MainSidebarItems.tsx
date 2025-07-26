@@ -32,10 +32,7 @@ export const MainSidebarItems = () => {
                                 variant={pathname === item.url ? "outline" : "default"}
                                 className={cn(item.disable && "text-muted-foreground")}
                             >
-                                <Link
-                                    href={item.disable ? "#" : item.url}
-                                    prefetch={false}
-                                >
+                                <Link href={item.disable ? "#" : item.url}>
                                     <item.icon />
                                     <span>{item.title} </span>
                                     {item.disable && <Lock />}
