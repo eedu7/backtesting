@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { MainSidebarItems } from "@/modules/dashboard/journal/components/MainSidebarItems";
 import { SidebarSignOutButton } from "@/modules/dashboard/journal/components/SidebarSignOutButton";
-import { sidebarFooterItems } from "@/modules/dashboard/layout/constants";
+import { sidebarFooterItems, sidebarItems } from "@/modules/dashboard/layout/constants";
 import { Lock } from "lucide-react";
 
 import {
@@ -38,30 +38,33 @@ export const DashboardSidebar = () => {
             </SidebarContent>
             <SidebarFooter>
                 <SidebarGroup>
-                    <SidebarMenu>
-                        {/*TODO: Open Modal*/}
-                        {sidebarFooterItems.map((item) => (
-                            <SidebarMenuItem key={item.title}>
-                                <SidebarMenuButton
-                                    asChild
-                                    title={item.title}
-                                    className={cn(item.disable && "text-muted-foreground")}
-                                >
-                                    <div>
-                                        <item.icon />
-                                        <span>{item.title} </span>
-                                        {item.disable && <Lock />}
-                                    </div>
-                                </SidebarMenuButton>
-                            </SidebarMenuItem>
-                        ))}
-                    </SidebarMenu>
+                    <SidebarGroupContent>
+                        <SidebarMenu>
+                            {sidebarFooterItems.map((item) => (
+                                <SidebarMenuItem key={item.title}>
+                                    <SidebarMenuButton
+                                        asChild
+                                        title={item.title}
+                                        className={cn(item.disable && "text-muted-foreground")}
+                                    >
+                                        <div>
+                                            <item.icon />
+                                            <span>{item.title}</span>
+                                            {item.disable && <Lock />}
+                                        </div>
+                                    </SidebarMenuButton>
+                                </SidebarMenuItem>
+                            ))}
+                        </SidebarMenu>
+                    </SidebarGroupContent>
                 </SidebarGroup>
                 <SidebarGroup>
                     <SidebarGroupLabel>Profile</SidebarGroupLabel>
-                    <SidebarMenu>
-                        <SidebarSignOutButton />
-                    </SidebarMenu>
+                    <SidebarGroupContent>
+                        <SidebarMenu>
+                            <SidebarSignOutButton />
+                        </SidebarMenu>
+                    </SidebarGroupContent>
                 </SidebarGroup>
             </SidebarFooter>
         </Sidebar>
