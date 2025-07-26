@@ -18,19 +18,18 @@ type Value = {
 
 interface FilterCardProps {
     label: string;
-    placeholder: string;
     values: Value[];
     // TODO: Added the onChange method
     // onChange: (value: string) => void;
 }
 
-export const FilterCard = ({ label, placeholder, values }: FilterCardProps) => {
+export const FilterCard = ({ label, values }: FilterCardProps) => {
     return (
         <div className="w-full space-y-2">
             <Label>{label}</Label>
             <Select>
-                <SelectTrigger className="min-w-44">
-                    <SelectValue placeholder={placeholder || `Select a ${label}`} />
+                <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Select" />
                 </SelectTrigger>
                 <SelectContent className="max-h-96">
                     <SelectGroup>

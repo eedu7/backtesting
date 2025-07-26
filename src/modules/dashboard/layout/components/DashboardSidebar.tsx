@@ -1,7 +1,10 @@
 import React from "react";
 
+import { SidebarSignOutButton } from "@/modules/dashboard/journal/components/SidebarSignOutButton";
 import { sidebarFooterItems, sidebarItems } from "@/modules/dashboard/layout/constants";
-import { UserButton } from "@clerk/nextjs";
+import { SignOutButton } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
+import { LogOut } from "lucide-react";
 
 import {
     Sidebar,
@@ -33,10 +36,13 @@ export const DashboardSidebar = () => {
                         <SidebarMenu>
                             {sidebarItems.map((item) => (
                                 <SidebarMenuItem key={item.title}>
-                                    <SidebarMenuButton asChild>
+                                    <SidebarMenuButton
+                                        asChild
+                                        disabled={true}
+                                    >
                                         <a href={item.url}>
                                             <item.icon />
-                                            <span>{item.title}</span>
+                                            <span>{item.title} </span>
                                         </a>
                                     </SidebarMenuButton>
                                 </SidebarMenuItem>
@@ -48,18 +54,7 @@ export const DashboardSidebar = () => {
             <SidebarFooter>
                 <SidebarGroup>
                     <SidebarMenu>
-                        <SidebarMenuItem className="px-2">
-                            <SidebarMenuButton asChild>
-                                <UserButton
-                                    appearance={{
-                                        elements: {
-                                            avatarBox: "w-32 h-32",
-                                            button: "w-full border border-red-500",
-                                        },
-                                    }}
-                                />
-                            </SidebarMenuButton>
-                        </SidebarMenuItem>
+                        <SidebarSignOutButton />
                         {sidebarFooterItems.map((item) => (
                             <SidebarMenuItem key={item.title}>
                                 <SidebarMenuButton asChild>

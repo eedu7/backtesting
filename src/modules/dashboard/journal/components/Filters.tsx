@@ -2,54 +2,58 @@ import React from "react";
 
 import { FilterCard } from "@/modules/dashboard/journal/components/FilterCard";
 import { tradeDurations, tradeSides, tradeSymbolPairs, tradeTags } from "@/modules/dashboard/journal/constants";
+import { Calendar, Funnel, Trash } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 
 export const Filters = () => {
     return (
-        <div className="flex items-center gap-4 p-2">
-            <div className="flex items-center gap-4">
+        <div>
+            <div className="grid grid-cols-2 gap-4 px-2 py-2 md:grid-cols-4 xl:px-4">
                 <FilterCard
                     label="Symbol Pair"
-                    placeholder="Select a symbol Pair"
                     values={tradeSymbolPairs}
                 />
                 <FilterCard
                     label="Tags"
-                    placeholder="Select a tag"
                     values={tradeTags}
                 />
                 <FilterCard
                     label="Side"
-                    placeholder="Select a side"
                     values={tradeSides}
                 />
                 <FilterCard
                     label="Duration"
-                    placeholder="Select a duration"
                     values={tradeDurations}
                 />
             </div>
-            <div className="mt-[22px] flex items-center gap-4">
-                {/* TODO: Made modal for these two */}
+            <div className="grid grid-cols-2 gap-2 px-2 py-2 md:grid-cols-4 md:gap-4 xl:px-4">
                 <Button
                     variant="outline"
-                    className="min-w-44 cursor-pointer"
+                    disabled
                 >
-                    Apr 10 - May 8
+                    <div className="flex w-full items-center gap-1 md:gap-2">
+                        <Calendar />
+                        <span className="md:text-md text-xs">Timeframe</span>
+                    </div>
                 </Button>
                 <Button
                     variant="outline"
-                    className="min-w-44 cursor-pointer"
+                    disabled
                 >
-                    Advance
+                    <div className="flex w-full items-center gap-1 md:gap-2">
+                        <Funnel />
+                        <span className="md:text-md text-xs">Advance Search</span>
+                    </div>
                 </Button>
-                {/* TODO: Clear all the filters */}
                 <Button
                     variant="outline"
-                    className="min-w-44 cursor-pointer"
+                    disabled
                 >
-                    Clear
+                    <div className="flex w-full items-center gap-1 md:gap-2">
+                        <Trash />
+                        <span className="md:text-md text-xs">Clear</span>
+                    </div>
                 </Button>
             </div>
         </div>

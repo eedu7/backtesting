@@ -14,8 +14,10 @@ const merriweather = Merriweather({
 
 export const JournalPageView = () => {
     return (
-        <div className="space-y-8 p-4">
-            <h1 className={cn("text-bold text-xl", merriweather.className)}>Journal</h1>
+        <div className="space-y-4 p-2 xl:p-4">
+            <h1 className={cn("text-bold rounded-lg bg-zinc-50 px-2 py-2 text-xl xl:px-4", merriweather.className)}>
+                Journal
+            </h1>
             <Filters />
         </div>
     );
