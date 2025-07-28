@@ -1,0 +1,222 @@
+{
+  "id": "10477100-7d81-45f1-9aab-027275bb619b",
+  "prevId": "1df80c0b-5fda-4aac-89f4-8fb37fe3f74c",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.symbolsPairs": {
+      "name": "symbolsPairs",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "identity": {
+            "type": "byDefault",
+            "name": "symbolsPairs_id_seq",
+            "schema": "public",
+            "increment": "1",
+            "startWith": "1",
+            "minValue": "1",
+            "maxValue": "2147483647",
+            "cache": "1",
+            "cycle": false
+          }
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.trade": {
+      "name": "trade",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "identity": {
+            "type": "byDefault",
+            "name": "trade_id_seq",
+            "schema": "public",
+            "increment": "1",
+            "startWith": "1",
+            "minValue": "1",
+            "maxValue": "2147483647",
+            "cache": "1",
+            "cycle": false
+          }
+        },
+        "symbol": {
+          "name": "symbol",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "tag": {
+          "name": "tag",
+          "type": "tradeTag",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "entry_time": {
+          "name": "entry_time",
+          "type": "varchar(30)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "exit_time": {
+          "name": "exit_time",
+          "type": "varchar(30)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "entry_price": {
+          "name": "entry_price",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "exit_price": {
+          "name": "exit_price",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "trade_status": {
+          "name": "trade_status",
+          "type": "tradeStatus",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "risk_to_reward": {
+          "name": "risk_to_reward",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "actual_risk_to_reward": {
+          "name": "actual_risk_to_reward",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "risk_to_trade": {
+          "name": "risk_to_trade",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "profit_loss": {
+          "name": "profit_loss",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "trade_grade": {
+          "name": "trade_grade",
+          "type": "tradeGrade",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "news_day": {
+          "name": "news_day",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        },
+        "impact_of_news_day": {
+          "name": "impact_of_news_day",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mistake": {
+          "name": "mistake",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "strategy_description": {
+          "name": "strategy_description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "learning_description": {
+          "name": "learning_description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {
+    "public.tradeGrade": {
+      "name": "tradeGrade",
+      "schema": "public",
+      "values": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "public.tradeStatus": {
+      "name": "tradeStatus",
+      "schema": "public",
+      "values": [
+        "win",
+        "loss",
+        "tie"
+      ]
+    },
+    "public.tradeTag": {
+      "name": "tradeTag",
+      "schema": "public",
+      "values": [
+        "long",
+        "short",
+        "both"
+      ]
+    }
+  },
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}
