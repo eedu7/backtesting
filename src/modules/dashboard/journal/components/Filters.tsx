@@ -1,8 +1,9 @@
 import React from "react";
+import Link from "next/link";
 
 import { FilterCard } from "@/modules/dashboard/journal/components/FilterCard";
 import { tradeDurations, tradeSides, tradeSymbolPairs, tradeTags } from "@/modules/dashboard/journal/constants";
-import { Calendar, Funnel, Trash } from "lucide-react";
+import { Calendar, Funnel, Plus, Trash } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 
@@ -55,6 +56,21 @@ export const Filters = () => {
                         <span className="text-xs md:text-sm">Clear</span>
                     </div>
                 </Button>
+                <Link
+                    href="/dashboard/add-trades"
+                    passHref
+                    className="w-full"
+                >
+                    <Button
+                        variant="outline"
+                        className="w-full"
+                    >
+                        <div className="flex w-full items-center gap-1 md:gap-2">
+                            <Plus />
+                            <span className="text-xs md:text-sm">Add Trade</span>
+                        </div>
+                    </Button>
+                </Link>
             </div>
         </div>
     );

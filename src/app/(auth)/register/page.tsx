@@ -8,6 +8,6 @@ export const metadata: Metadata = {
     description: "Register to Backtest Pro",
 };
 
-export function RegisterPage() {
+export default function RegisterPage() {
     return <RegisterCard />;
 }

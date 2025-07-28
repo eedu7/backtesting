@@ -1,6 +1,8 @@
 import React from "react";
 import { Merriweather } from "next/font/google";
 
+import { columns, Payment } from "@/modules/dashboard/journal/components/columns";
+import { DataTable } from "@/modules/dashboard/journal/components/data-table";
 import { Filters } from "@/modules/dashboard/journal/components/Filters";
 
 import { cn } from "@/lib/utils";
@@ -12,6 +14,15 @@ const merriweather = Merriweather({
     variable: "--font-merriweather",
 });
 
+const data: Payment[] = [
+    {
+        id: "728ed52f",
+        amount: 100,
+        status: "pending",
+        email: "m@example.com",
+    },
+];
+
 export const JournalPageView = () => {
     return (
         <div className="space-y-4 p-2 xl:p-4">
@@ -19,6 +30,10 @@ export const JournalPageView = () => {
                 Journal
             </h1>
             <Filters />
+            <DataTable
+                columns={columns}
+                data={data}
+            />
         </div>
     );
 };
