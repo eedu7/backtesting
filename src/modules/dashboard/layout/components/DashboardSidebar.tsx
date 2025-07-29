@@ -3,9 +3,11 @@ import Link from "next/link";
 
 import { MainSidebarItems } from "@/modules/dashboard/journal/components/MainSidebarItems";
 import { SidebarSignOutButton } from "@/modules/dashboard/journal/components/SidebarSignOutButton";
+import { ManageSettings } from "@/modules/dashboard/layout/components/ManageSettings";
 import { sidebarFooterItems, sidebarItems } from "@/modules/dashboard/layout/constants";
-import { Lock } from "lucide-react";
+import { ChevronDown, Lock, Plus, Settings } from "lucide-react";
 
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import {
     Sidebar,
     SidebarContent,
@@ -16,6 +18,9 @@ import {
     SidebarMenu,
     SidebarMenuButton,
     SidebarMenuItem,
+    SidebarMenuSub,
+    SidebarMenuSubButton,
+    SidebarMenuSubItem,
     SidebarTrigger,
 } from "@/components/ui/sidebar";
 
@@ -37,27 +42,7 @@ export const DashboardSidebar = () => {
                 <MainSidebarItems />
             </SidebarContent>
             <SidebarFooter>
-                <SidebarGroup>
-                    <SidebarGroupContent>
-                        <SidebarMenu>
-                            {sidebarFooterItems.map((item) => (
-                                <SidebarMenuItem key={item.title}>
-                                    <SidebarMenuButton
-                                        asChild
-                                        title={item.title}
-                                        className={cn(item.disable && "text-muted-foreground")}
-                                    >
-                                        <div>
-                                            <item.icon />
-                                            <span>{item.title}</span>
-                                            {item.disable && <Lock />}
-                                        </div>
-                                    </SidebarMenuButton>
-                                </SidebarMenuItem>
-                            ))}
-                        </SidebarMenu>
-                    </SidebarGroupContent>
-                </SidebarGroup>
+                <ManageSettings />
                 <SidebarGroup>
                     <SidebarGroupLabel>Profile</SidebarGroupLabel>
                     <SidebarGroupContent>
