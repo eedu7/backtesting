@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 
 import { AddSymbolPairDialog } from "@/modules/dashboard/layout/components/AddSymbolPairDialog";
-import { ChevronDown, Plus } from "lucide-react";
+import { ChevronDown, Plus, Settings2 } from "lucide-react";
 
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import {
