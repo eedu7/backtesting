@@ -1,20 +1,25 @@
 "use client";
 
-import { useId, useState } from "react";
+import { useId } from "react";
 
+import { FormItem } from "@/components/ui/form";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 
-export default function NewsDaySwitchInput() {
+interface NewsDaySwitchInputProps {
+    checked: boolean;
+    onCheckedChange: (checked: boolean) => void;
+}
+
+export default function NewsDaySwitchInput({ checked, onCheckedChange }: NewsDaySwitchInputProps) {
     const id = useId();
-    const [checked, setChecked] = useState<boolean>(true);
 
     return (
-        <div className="inline-flex items-center gap-2">
+        <FormItem className="inline-flex items-center gap-2">
             <Switch
                 id={id}
                 checked={checked}
-                onCheckedChange={setChecked}
+                onCheckedChange={onCheckedChange}
                 aria-label="Toggle switch"
             />
             <Label
@@ -23,6 +28,6 @@ export default function NewsDaySwitchInput() {
             >
                 News Day
             </Label>
-        </div>
+        </FormItem>
     );
 }

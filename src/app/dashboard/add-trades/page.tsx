@@ -13,7 +13,7 @@ import { z } from "zod";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Form } from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -64,107 +64,271 @@ export default function AddTradesPage() {
                     >
                         <Separator className="w-full" />
                         <CardContent>
-                            <SymbolPairInput />
-                            <TagInput />
-                            <div className="space-y-2">
-                                <Label>Entry Time</Label>
-                                <DateTimePickerInput />
-                            </div>
-                            <div className="space-y-2">
-                                <Label>Exit Time</Label>
-                                <DateTimePickerInput />
-                            </div>
+                            <FormField
+                                name={"symbol"}
+                                control={form.control}
+                                render={({ field }) => (
+                                    <SymbolPairInput
+                                        value={field.value}
+                                        onValueChange={field.onChange}
+                                    />
+                                )}
+                            />
+                            <FormField
+                                name={"tag"}
+                                control={form.control}
+                                render={({ field }) => (
+                                    <TagInput
+                                        value={field.value}
+                                        onValueChange={field.onChange}
+                                    />
+                                )}
+                            />
+                            {/*TODO: Add onChange and value*/}
+                            <FormField
+                                name={"entryTime"}
+                                control={form.control}
+                                render={({ field }) => (
+                                    <div className="space-y-2">
+                                        <Label>Entry Time</Label>
+                                        <DateTimePickerInput />
+                                    </div>
+                                )}
+                            />
+                            {/*TODO: Add onChange and value*/}
+                            <FormField
+                                name={"exitTime"}
+                                control={form.control}
+                                render={({ field }) => (
+                                    <div className="space-y-2">
+                                        <Label>Exit Time</Label>
+                                        <DateTimePickerInput />
+                                    </div>
+                                )}
+                            />
                             <div className="grid grid-cols-2 gap-4">
-                                <div className="space-y-2">
-                                    <Label>Entry Price</Label>
-                                    <Input type="number" />
-                                </div>
-                                <div className="space-y-2">
-                                    <Label>Exit Price</Label>
-                                    <Input type="number" />
-                                </div>
+                                <FormField
+                                    name={"entryPrice"}
+                                    control={form.control}
+                                    render={({ field }) => (
+                                        <div className="space-y-2">
+                                            <Label>Entry Price</Label>
+                                            <Input
+                                                type="number"
+                                                {...field}
+                                            />
+                                        </div>
+                                    )}
+                                />
+                                <FormField
+                                    name={"entryPrice"}
+                                    control={form.control}
+                                    render={({ field }) => (
+                                        <div className="space-y-2">
+                                            <Label>Exit Price</Label>
+                                            <Input
+                                                type="number"
+                                                {...field}
+                                            />
+                                        </div>
+                                    )}
+                                />
                             </div>
-                            <div className="w-full space-y-2">
-                                <Label>Trade Status</Label>
-                                <Select>
-                                    <SelectTrigger className="w-full">
-                                        <SelectValue placeholder="Win/Loss" />
-                                    </SelectTrigger>
-                                    <SelectContent className="w-full">
-                                        <SelectGroup>
-                                            <SelectItem value="win">Win</SelectItem>
-                                            <SelectItem value="loss">Loss</SelectItem>
-                                        </SelectGroup>
-                                    </SelectContent>
-                                </Select>
-                            </div>
+                            <FormField
+                                name="tradeStatus"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Trade Status</FormLabel>
+                                        <FormControl>
+                                            <Select
+                                                value={field.value}
+                                                onValueChange={field.onChange}
+                                            >
+                                                <SelectTrigger className="w-full">
+                                                    <SelectValue placeholder="Win/Loss" />
+                                                </SelectTrigger>
+                                                <SelectContent className="w-full">
+                                                    <SelectGroup>
+                                                        <SelectItem value="win">Win</SelectItem>
+                                                        <SelectItem value="loss">Loss</SelectItem>
+                                                    </SelectGroup>
+                                                </SelectContent>
+                                            </Select>
+                                        </FormControl>
+                                    </FormItem>
+                                )}
+                            />
 
                             <div className="grid grid-cols-2 gap-4">
-                                <div className="space-y-2">
-                                    <Label>RR%</Label>
-                                    <Input type="number" />
-                                </div>
-                                <div className="space-y-2">
-                                    <Label>Actual RR%</Label>
-                                    <Input type="number" />
-                                </div>
+                                <FormField
+                                    name="riskToReward"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>RR%</FormLabel>
+                                            <FormControl>
+                                                <Input
+                                                    {...field}
+                                                    type="number"
+                                                />
+                                            </FormControl>
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    name="actualRiskToReward"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>Actual RR%</FormLabel>
+                                            <FormControl>
+                                                <Input
+                                                    {...field}
+                                                    type="number"
+                                                />
+                                            </FormControl>
+                                        </FormItem>
+                                    )}
+                                />
                             </div>
-                            <div className="space-y-2">
-                                <Label>RT $</Label>
-                                <Input type="number" />
+                            <FormField
+                                name="tradeStatus"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>RT $</FormLabel>
+                                        <FormControl>
+                                            <Input
+                                                {...field}
+                                                type="number"
+                                            />
+                                        </FormControl>
+                                    </FormItem>
+                                )}
+                            />
+                            <div className="grid grid-cols-3 gap-4">
+                                <FormField
+                                    name="tradeStatus"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>Profit/Loss</FormLabel>
+                                            <FormControl>
+                                                <Input
+                                                    {...field}
+                                                    type="number"
+                                                />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    name="tradeGrade"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>Trade Grade</FormLabel>
+                                            <FormControl>
+                                                <Select
+                                                    value={field.value}
+                                                    onValueChange={field.onChange}
+                                                >
+                                                    <SelectTrigger className="w-full">
+                                                        <SelectValue placeholder="Grade" />
+                                                    </SelectTrigger>
+                                                    <SelectContent className="w-full">
+                                                        <SelectGroup>
+                                                            <SelectItem value="A">A</SelectItem>
+                                                            <SelectItem value="B">B</SelectItem>
+                                                            <SelectItem value="C">C</SelectItem>
+                                                            <SelectItem value="D">D</SelectItem>
+                                                        </SelectGroup>
+                                                    </SelectContent>
+                                                </Select>
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
                             </div>
                             <div className="grid grid-cols-3 gap-4">
-                                <div className="col-span-2 space-y-2">
-                                    <Label>Profit/Loss</Label>
-                                    <Input type="number" />
-                                </div>
-                                <div className="space-y-2">
-                                    <Label>Trade Grade</Label>
-                                    <Select>
-                                        <SelectTrigger className="w-full">
-                                            <SelectValue placeholder="Grade" />
-                                        </SelectTrigger>
-                                        <SelectContent className="w-full">
-                                            <SelectGroup>
-                                                <SelectItem value="A">A</SelectItem>
-                                                <SelectItem value="B">B</SelectItem>
-                                                <SelectItem value="C">C</SelectItem>
-                                                <SelectItem value="D">D</SelectItem>
-                                            </SelectGroup>
-                                        </SelectContent>
-                                    </Select>
-                                </div>
+                                <FormField
+                                    name="newsDay"
+                                    render={({ field }) => (
+                                        <NewsDaySwitchInput
+                                            checked={field.value}
+                                            onCheckedChange={field.onChange}
+                                        />
+                                    )}
+                                />
+                                <FormField
+                                    name="newsDayImpact"
+                                    render={({ field }) => (
+                                        <FormItem className="col-span-2 space-y-2">
+                                            <FormLabel>Impact of News day</FormLabel>
+                                            <FormControl>
+                                                <Select
+                                                    value={field.value}
+                                                    onValueChange={field.onChange}
+                                                >
+                                                    <SelectTrigger className="w-full">
+                                                        <SelectValue placeholder="Impact" />
+                                                    </SelectTrigger>
+                                                    <SelectContent className="w-full">
+                                                        <SelectGroup>
+                                                            <SelectItem value="Positive">Positive</SelectItem>
+                                                            <SelectItem value="Negative">Negative</SelectItem>
+                                                            <SelectItem value="Neutral">Neutral</SelectItem>
+                                                        </SelectGroup>
+                                                    </SelectContent>
+                                                </Select>
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
                             </div>
-                            <div className="grid grid-cols-3 gap-4">
-                                <NewsDaySwitchInput />
-                                <div className="col-span-2 space-y-2">
-                                    <Label>Impact of News day</Label>
-                                    <Select>
-                                        <SelectTrigger className="w-full">
-                                            <SelectValue placeholder="Impact" />
-                                        </SelectTrigger>
-                                        <SelectContent className="w-full">
-                                            <SelectGroup>
-                                                <SelectItem value="Positive">Positive</SelectItem>
-                                                <SelectItem value="Negative">Negative</SelectItem>
-                                                <SelectItem value="Neutral">Neutral</SelectItem>
-                                            </SelectGroup>
-                                        </SelectContent>
-                                    </Select>
-                                </div>
-                            </div>
-                            <div className="space-y-2">
-                                <Label>Mistake</Label>
-                                <Textarea placeholder="What mistake did you make in this trade?" />
-                            </div>
-                            <div className="space-y-2">
-                                <Label>Strategy Description</Label>
-                                <Textarea placeholder="Describe the strategy you followed for this trade." />
-                            </div>
-                            <div className="space-y-2">
-                                <Label>Learning</Label>
-                                <Textarea placeholder="What did you learn from this trade?" />
-                            </div>
+                            <FormField
+                                name="mistakeDescription"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Mistake Description</FormLabel>
+                                        <FormControl>
+                                            <Textarea
+                                                {...field}
+                                                placeholder="What mistake did you make in this trade?"
+                                            />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                name="strategyDescription"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Strategy Description</FormLabel>
+                                        <FormControl>
+                                            <Textarea
+                                                {...field}
+                                                placeholder="Describe the strategy you followed for this trade."
+                                            />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                name="learningDescription"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Learning Description</FormLabel>
+                                        <FormControl>
+                                            <Textarea
+                                                {...field}
+                                                placeholder="What did you learn from this trade?"
+                                            />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
                         </CardContent>
                         <CardFooter>
                             <Button

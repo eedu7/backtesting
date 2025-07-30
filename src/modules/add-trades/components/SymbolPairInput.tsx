@@ -3,11 +3,16 @@ import React from "react";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
-export const SymbolPairInput = () => {
+interface SymbolPairInputProps {
+    value: string;
+    onValueChange: (value: string) => void;
+}
+
+export const SymbolPairInput = (props: SymbolPairInputProps) => {
     return (
         <div className="space-y-2">
             <Label>Symbol Pair</Label>
-            <Select>
+            <Select {...props}>
                 <SelectTrigger className="w-full">
                     <SelectValue placeholder="Symbol Pair" />
                 </SelectTrigger>
