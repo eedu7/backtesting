@@ -1,8 +1,7 @@
 import React from "react";
-import Link from "next/link";
 
-import { AddSymbolPairDialog } from "@/modules/dashboard/layout/components/AddSymbolPairDialog";
-import { ChevronDown, Plus, Settings2 } from "lucide-react";
+import { RiSwap2Line } from "@remixicon/react";
+import { ChevronDown, Plus } from "lucide-react";
 
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import {
@@ -35,8 +34,10 @@ export const ManageSettings = () => {
                                     <Plus />
                                     Add Trade
                                 </SidebarMenuSubButton>
+                                <SidebarMenuSubButton href={"/dashboard/add-symbol-pair#add-symbol-pair"}>
+                                    <RiSwap2Line /> Symbol Pair
+                                </SidebarMenuSubButton>
                             </SidebarMenuSubItem>
-                            <AddSymbolPairDialog />
                         </SidebarMenuSub>
                     </SidebarGroupContent>
                 </CollapsibleContent>

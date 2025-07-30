@@ -1,5 +1,8 @@
 import { symbolsPairs } from "@/db/schema";
+import { trpc } from "@/trpc/client";
 import { baseProcedure, createTRPCRouter } from "@/trpc/init";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 export const symbolPairProcedure = createTRPCRouter({
@@ -10,7 +13,17 @@ export const symbolPairProcedure = createTRPCRouter({
     add: baseProcedure
         .input(
             z.object({
-                name: z.string(),
+                name: z
+                    .string()
+                    .min(3, {
+                        message: "Name must be at least 3 characters",
+                    })
+                    .max(20, {
+                        message: "Name must be at most 20 characters",
+                    })
+                    .regex(/^[A-Z]{3,10}\/[A-Z]{3,10}$/, {
+                        message: "Name must be in format BASE/QUOTE (e.g., BTC/USD)",
+                    }),
             }),
         )
         .mutation(async ({ input, ctx }) => {
