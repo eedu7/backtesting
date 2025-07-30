@@ -1,6 +1,9 @@
 import { Merriweather, Poppins } from "next/font/google";
 import Link from "next/link";
 
+import { ClientGreeting } from "@/app/client-greeting";
+import { trpc } from "@/trpc/server";
+
 import { Button } from "@/components/ui/button";
 
 import { cn } from "@/lib/utils";
@@ -20,6 +23,7 @@ const merriweather = Merriweather({
 });
 
 export default function HomePage() {
+    void trpc.hello.prefetch({ text: "Batman" });
     return (
         <div className="flex h-screen w-screen flex-col items-center justify-center px-4 text-center">
             <h1
@@ -38,6 +42,7 @@ export default function HomePage() {
                 <Button asChild>
                     <Link href="/dashboard">Dashboard</Link>
                 </Button>
+                <ClientGreeting />
             </div>
         </div>
     );
