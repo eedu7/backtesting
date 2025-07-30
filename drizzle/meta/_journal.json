@@ -15,6 +15,13 @@
       "when": 1753697539790,
       "tag": "0001_broken_tyrannus",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1753845667633,
+      "tag": "0002_chubby_nebula",
+      "breakpoints": true
     }
   ]
 }

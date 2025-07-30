@@ -37,15 +37,13 @@ export const AddSymbolPairDialog = () => {
                                 Add a new trading symbol pair to your journal. You can modify or remove it later.
                             </DialogDescription>
                         </DialogHeader>
-                        <div className="grid gap-4">
-                            <div className="grid gap-3">
-                                <Label htmlFor="name-1">Symbol Pair</Label>
-                                <Input
-                                    id="name-1"
-                                    name="name"
-                                    defaultValue="BTC/USD"
-                                />
-                            </div>
+                        <div className="grid gap-3">
+                            <Label htmlFor="symbol-pair">Symbol Pair</Label>
+                            <Input
+                                id="symbol-pair"
+                                name="symbol-pair"
+                                defaultValue="BTC/USD"
+                            />
                         </div>
                         <DialogFooter>
                             <DialogClose asChild>
