@@ -1,22 +1,12 @@
 import "dotenv/config";
 
+import * as schema from "@/db/schema";
 import { drizzle } from "drizzle-orm/node-postgres";
-import { Client } from "pg";
 
-const PG_HOST = process.env.PG_HOST!;
-const PG_PORT = process.env.PG_PORT!;
-const PG_USER = process.env.PG_USER!;
-const PG_PASSWORD = process.env.PG_PASSWORD!;
-const PG_DATABASE = process.env.PG_DATABASE!;
+const DATABASE_URL = process.env.DATABASE_URL;
 
-const client = new Client({
-    host: PG_HOST,
-    port: parseInt(PG_PORT),
-    user: PG_USER,
-    password: PG_PASSWORD,
-    database: PG_DATABASE,
-});
+if (!DATABASE_URL) {
+    throw new Error("DATABASE_URL is not defined");
+}
 
-await client.connect();
-
-export const db = drizzle(client);
+export const db = drizzle(DATABASE_URL, { schema });
