@@ -25,47 +25,47 @@ export const sidebarItems: Item[] = [
         url: "/dashboard",
         icon: LayoutDashboard,
     },
-    {
-        title: "Reports",
-        url: "/dashboard/reports",
-        disable: true,
-        icon: BarChart3,
-    },
+    // {
+    //     title: "Reports",
+    //     url: "/dashboard/reports",
+    //     disable: true,
+    //     icon: BarChart3,
+    // },
     {
         title: "Journal",
         url: "/dashboard/journal",
         icon: Notebook,
     },
-    {
-        title: "Trades",
-        url: "/dashboard/trades",
-        icon: Search,
-        disable: true,
-    },
-    {
-        title: "Playlists",
-        url: "/dashboard/playlists",
-        icon: ListMusic,
-        disable: true,
-    },
-    {
-        title: "Market Replay",
-        url: "/dashboard/market-replay",
-        icon: RefreshCw,
-        disable: true,
-    },
-    {
-        title: "Strategies",
-        url: "/dashboard/strategies",
-        icon: BrainCog,
-        disable: true,
-    },
-    {
-        title: "Trading Plan",
-        url: "/dashboard/trading-plan",
-        icon: ClipboardList,
-        disable: true,
-    },
+    // {
+    //     title: "Trades",
+    //     url: "/dashboard/trades",
+    //     icon: Search,
+    //     disable: true,
+    // },
+    // {
+    //     title: "Playlists",
+    //     url: "/dashboard/playlists",
+    //     icon: ListMusic,
+    //     disable: true,
+    // },
+    // {
+    //     title: "Market Replay",
+    //     url: "/dashboard/market-replay",
+    //     icon: RefreshCw,
+    //     disable: true,
+    // },
+    // {
+    //     title: "Strategies",
+    //     url: "/dashboard/strategies",
+    //     icon: BrainCog,
+    //     disable: true,
+    // },
+    // {
+    //     title: "Trading Plan",
+    //     url: "/dashboard/trading-plan",
+    //     icon: ClipboardList,
+    //     disable: true,
+    // },
 ];
 
 type SidebarFooterItem = {
