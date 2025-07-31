@@ -4,7 +4,7 @@ import "./globals.css";
 
 import React from "react";
 
-import TanstackQuery from "@/providers/TanstackQuery";
+import { TRPCProvider } from "@/trpc/client";
 import { ClerkProvider } from "@clerk/nextjs";
 
 import { Toaster } from "@/components/ui/sonner";
@@ -21,15 +21,15 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <ClerkProvider>
-            <TanstackQuery>
-                <html lang="en">
-                    <body className="antialiased">
+        <html lang="en">
+            <body className="antialiased">
+                <ClerkProvider>
+                    <TRPCProvider>
                         {children}
                         <Toaster />
-                    </body>
-                </html>
-            </TanstackQuery>
-        </ClerkProvider>
+                    </TRPCProvider>
+                </ClerkProvider>
+            </body>
+        </html>
     );
 }

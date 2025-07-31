@@ -1,0 +1,1 @@
+ALTER TABLE "trade" ALTER COLUMN "impactOfNewsDay" SET DATA TYPE varchar(20);

@@ -1,4 +1,4 @@
-import { boolean, integer, pgEnum, pgTable, text, varchar } from "drizzle-orm/pg-core";
+import { boolean, date, integer, pgEnum, pgTable, text, varchar } from "drizzle-orm/pg-core";
 
 export const symbolsPairs = pgTable("symbolsPairs", {
     id: integer().primaryKey().generatedByDefaultAsIdentity(),
@@ -16,6 +16,8 @@ export const trade = pgTable("trade", {
     tag: TradeTag(),
     entryTime: varchar({ length: 30 }),
     exitTime: varchar({ length: 30 }),
+    entryDate: date(),
+    exitDate: date(),
     entryPrice: integer(),
     exitPrice: integer(),
     tradeStatus: TradeStatus(),
@@ -25,7 +27,7 @@ export const trade = pgTable("trade", {
     profitNLoss: integer(),
     tradeGrade: TradeGrade(),
     newsDay: boolean().default(false),
-    impactOfNewsDay: integer(),
+    impactOfNewsDay: varchar({ length: 20 }),
     mistakeDescription: text(),
     strategyDescription: text(),
     learningDescription: text(),
