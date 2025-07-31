@@ -2,51 +2,69 @@
 
 import React from "react";
 
-import { DateTimePickerInput } from "@/modules/add-trades/components/DateTimePickerInput";
 import NewsDaySwitchInput from "@/modules/add-trades/components/NewsDaySwitchInput";
 import { SymbolPairInput } from "@/modules/add-trades/components/SymbolPairInput";
 import { TagInput } from "@/modules/add-trades/components/TagInput";
 import { tradeSchema } from "@/modules/add-trades/schmea";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { format } from "date-fns";
+import { ChevronDownIcon } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
 
 export default function AddTradesPage() {
+    function getDate() {
+        return new Date();
+    }
+
+    const today = getDate();
+
     const form = useForm<z.infer<typeof tradeSchema>>({
         resolver: zodResolver(tradeSchema),
         defaultValues: {
-            actualRiskToReward: 0,
-            entryPrice: 0,
-            exitPrice: 0,
+            symbol: "",
+            tag: "",
             entryTime: "",
             exitTime: "",
-            impactOfNewsDay: "",
-            learningDescription: "",
-            mistakeDescription: "",
-            newsDay: false,
+            entryDate: today,
+            exitDate: today,
+            entryPrice: 0,
+            exitPrice: 0,
+            tradeStatus: "",
+            riskToReward: 0,
+            actualRiskToReward: 0,
             riskToTrade: 0,
             profitNLoss: 0,
-            riskToReward: 0,
-            tag: "",
             tradeGrade: "",
-            tradeStatus: "",
+            newsDay: false,
+            impactOfNewsDay: "",
+            mistakeDescription: "",
             strategyDescription: "",
-            symbol: "",
+            learningDescription: "",
         },
     });
 
     const onSubmit = (data: z.infer<typeof tradeSchema>) => {
+        alert("Form is submitted with the following data:");
         alert(JSON.stringify(data, null, 2));
     };
+
+    const [open, setOpen] = React.useState(false);
+
+    const [date, setDate] = React.useState<Date | undefined>(undefined);
+
+    const [entryOpen, setEntryOpen] = React.useState(false);
+    const [entryDate, setEntryDate] = React.useState<Date | undefined>(undefined);
 
     return (
         <div className="flex min-h-screen items-center justify-center">
@@ -58,12 +76,9 @@ export default function AddTradesPage() {
                     </CardDescription>
                 </CardHeader>
                 <Form {...form}>
-                    <form
-                        onSubmit={form.handleSubmit(onSubmit)}
-                        className="space-y-4"
-                    >
+                    <form onSubmit={form.handleSubmit(onSubmit)}>
                         <Separator className="w-full" />
-                        <CardContent>
+                        <CardContent className="my-4 space-y-4">
                             <FormField
                                 name={"symbol"}
                                 control={form.control}
@@ -84,53 +99,156 @@ export default function AddTradesPage() {
                                     />
                                 )}
                             />
-                            {/*TODO: Add onChange and value*/}
-                            <FormField
-                                name={"entryTime"}
-                                control={form.control}
-                                render={({ field }) => (
-                                    <div className="space-y-2">
-                                        <Label>Entry Time</Label>
-                                        <DateTimePickerInput />
-                                    </div>
-                                )}
-                            />
-                            {/*TODO: Add onChange and value*/}
-                            <FormField
-                                name={"exitTime"}
-                                control={form.control}
-                                render={({ field }) => (
-                                    <div className="space-y-2">
-                                        <Label>Exit Time</Label>
-                                        <DateTimePickerInput />
-                                    </div>
-                                )}
-                            />
+                            {/*TODO: The value is not set for the date*/}
+                            <div className="flex w-full gap-4">
+                                <FormField
+                                    name="entryDate"
+                                    control={form.control}
+                                    render={({ field }) => (
+                                        <FormItem className="flex w-full flex-col gap-3">
+                                            <Popover
+                                                open={entryOpen}
+                                                onOpenChange={setEntryOpen}
+                                            >
+                                                <PopoverTrigger asChild>
+                                                    <Button
+                                                        variant="outline"
+                                                        className="w-full justify-between font-normal"
+                                                    >
+                                                        {field.value
+                                                            ? format(field.value, "dd-MM-yyyy")
+                                                            : "Select date"}
+
+                                                        <ChevronDownIcon />
+                                                    </Button>
+                                                </PopoverTrigger>
+                                                <PopoverContent
+                                                    className="w-auto p-0"
+                                                    align="start"
+                                                >
+                                                    <Calendar
+                                                        mode="single"
+                                                        selected={field.value}
+                                                        captionLayout="dropdown"
+                                                        onSelect={(date) => {
+                                                            field.onChange(date); // ✅ Sync to form
+                                                            setEntryOpen(false);
+                                                        }}
+                                                    />
+                                                </PopoverContent>
+                                            </Popover>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+
+                                <FormField
+                                    name="entryTime"
+                                    render={({ field }) => (
+                                        <FormItem className="flex w-full flex-col gap-3">
+                                            <Input
+                                                type="time"
+                                                id="time-picker"
+                                                step="1"
+                                                {...field}
+                                                className="bg-background w-full appearance-none [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none"
+                                            />
+                                        </FormItem>
+                                    )}
+                                />
+                            </div>
+                            {/*TODO: The value is not set for the date*/}
+
+                            <div className="flex w-full gap-4">
+                                <FormField
+                                    name="exitDate"
+                                    control={form.control}
+                                    render={({ field }) => (
+                                        <FormItem className="flex w-full flex-col gap-3">
+                                            <Popover
+                                                open={open}
+                                                onOpenChange={setOpen}
+                                            >
+                                                <PopoverTrigger asChild>
+                                                    <Button
+                                                        variant="outline"
+                                                        className="w-full justify-between font-normal"
+                                                    >
+                                                        {field.value
+                                                            ? format(field.value, "dd-MM-yyyy")
+                                                            : "Select date"}
+
+                                                        <ChevronDownIcon />
+                                                    </Button>
+                                                </PopoverTrigger>
+                                                <PopoverContent
+                                                    className="w-auto p-0"
+                                                    align="start"
+                                                >
+                                                    <Calendar
+                                                        mode="single"
+                                                        selected={field.value}
+                                                        captionLayout="dropdown"
+                                                        onSelect={(date) => {
+                                                            field.onChange(date); // ✅ Sync to form
+                                                            setOpen(false);
+                                                        }}
+                                                    />
+                                                </PopoverContent>
+                                            </Popover>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+
+                                <FormField
+                                    name="exitTime"
+                                    render={({ field }) => (
+                                        <FormItem className="flex w-full flex-col gap-3">
+                                            <Input
+                                                type="time"
+                                                id="time-picker"
+                                                step="1"
+                                                {...field}
+                                                className="bg-background w-full appearance-none [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none"
+                                            />
+                                        </FormItem>
+                                    )}
+                                />
+                            </div>
                             <div className="grid grid-cols-2 gap-4">
                                 <FormField
                                     name={"entryPrice"}
                                     control={form.control}
                                     render={({ field }) => (
-                                        <div className="space-y-2">
-                                            <Label>Entry Price</Label>
-                                            <Input
-                                                type="number"
-                                                {...field}
-                                            />
-                                        </div>
+                                        <FormItem>
+                                            <FormLabel>Entry Price</FormLabel>
+                                            <FormControl>
+                                                <Input
+                                                    type="number"
+                                                    value={field.value}
+                                                    onChange={(e) => field.onChange(e.target.valueAsNumber)}
+                                                />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
                                     )}
                                 />
                                 <FormField
-                                    name={"entryPrice"}
+                                    name={"exitPrice"}
                                     control={form.control}
                                     render={({ field }) => (
-                                        <div className="space-y-2">
-                                            <Label>Exit Price</Label>
-                                            <Input
-                                                type="number"
-                                                {...field}
-                                            />
-                                        </div>
+                                        <FormItem>
+                                            <FormLabel>Exit Price</FormLabel>
+                                            <FormControl>
+                                                <Input
+                                                    type="number"
+                                                    value={field.value}
+                                                    onChange={(e) => field.onChange(e.target.valueAsNumber)}
+                                                />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
                                     )}
                                 />
                             </div>
@@ -155,6 +273,7 @@ export default function AddTradesPage() {
                                                 </SelectContent>
                                             </Select>
                                         </FormControl>
+                                        <FormMessage />
                                     </FormItem>
                                 )}
                             />
@@ -167,10 +286,12 @@ export default function AddTradesPage() {
                                             <FormLabel>RR%</FormLabel>
                                             <FormControl>
                                                 <Input
-                                                    {...field}
                                                     type="number"
+                                                    value={field.value}
+                                                    onChange={(e) => field.onChange(e.target.valueAsNumber)}
                                                 />
                                             </FormControl>
+                                            <FormMessage />
                                         </FormItem>
                                     )}
                                 />
@@ -181,38 +302,43 @@ export default function AddTradesPage() {
                                             <FormLabel>Actual RR%</FormLabel>
                                             <FormControl>
                                                 <Input
-                                                    {...field}
                                                     type="number"
+                                                    value={field.value}
+                                                    onChange={(e) => field.onChange(e.target.valueAsNumber)}
                                                 />
                                             </FormControl>
+                                            <FormMessage />
                                         </FormItem>
                                     )}
                                 />
                             </div>
                             <FormField
-                                name="tradeStatus"
+                                name="riskToTrade"
                                 render={({ field }) => (
                                     <FormItem>
                                         <FormLabel>RT $</FormLabel>
                                         <FormControl>
                                             <Input
-                                                {...field}
                                                 type="number"
+                                                value={field.value}
+                                                onChange={(e) => field.onChange(e.target.valueAsNumber)}
                                             />
                                         </FormControl>
+                                        <FormMessage />
                                     </FormItem>
                                 )}
                             />
                             <div className="grid grid-cols-3 gap-4">
                                 <FormField
-                                    name="tradeStatus"
+                                    name="profitNLoss"
                                     render={({ field }) => (
-                                        <FormItem>
+                                        <FormItem className="col-span-2">
                                             <FormLabel>Profit/Loss</FormLabel>
                                             <FormControl>
                                                 <Input
-                                                    {...field}
                                                     type="number"
+                                                    value={field.value}
+                                                    onChange={(e) => field.onChange(e.target.valueAsNumber)}
                                                 />
                                             </FormControl>
                                             <FormMessage />
@@ -258,7 +384,7 @@ export default function AddTradesPage() {
                                     )}
                                 />
                                 <FormField
-                                    name="newsDayImpact"
+                                    name="impactOfNewsDay"
                                     render={({ field }) => (
                                         <FormItem className="col-span-2 space-y-2">
                                             <FormLabel>Impact of News day</FormLabel>

@@ -2,7 +2,7 @@
 
 import { useId } from "react";
 
-import { FormItem } from "@/components/ui/form";
+import { FormControl, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 
@@ -15,19 +15,24 @@ export default function NewsDaySwitchInput({ checked, onCheckedChange }: NewsDay
     const id = useId();
 
     return (
-        <FormItem className="inline-flex items-center gap-2">
-            <Switch
-                id={id}
-                checked={checked}
-                onCheckedChange={onCheckedChange}
-                aria-label="Toggle switch"
-            />
-            <Label
-                htmlFor={id}
-                className="text-sm font-medium"
-            >
-                News Day
-            </Label>
+        <FormItem>
+            <div className="inline-flex items-center gap-2">
+                <FormControl>
+                    <Switch
+                        id={id}
+                        checked={checked}
+                        onCheckedChange={onCheckedChange}
+                        aria-label="Toggle switch"
+                    />
+                </FormControl>
+                <FormLabel
+                    htmlFor={id}
+                    className="text-sm font-medium"
+                >
+                    News Day
+                </FormLabel>
+            </div>
+            <FormMessage />
         </FormItem>
     );
 }

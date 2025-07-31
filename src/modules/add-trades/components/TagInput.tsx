@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Label } from "@/components/ui/label";
+import { FormControl, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 interface TagInputProps {
@@ -10,20 +10,23 @@ interface TagInputProps {
 
 export const TagInput = (props: TagInputProps) => {
     return (
-        <div className="space-y-2">
-            <Label>Tag</Label>
-            <Select {...props}>
-                <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Tag" />
-                </SelectTrigger>
-                <SelectContent>
-                    <SelectGroup>
-                        <SelectItem value="long">Long</SelectItem>
-                        <SelectItem value="short">Short</SelectItem>
-                        <SelectItem value="both">Both</SelectItem>
-                    </SelectGroup>
-                </SelectContent>
-            </Select>
-        </div>
+        <FormItem>
+            <FormLabel>Tag</FormLabel>
+            <FormControl>
+                <Select {...props}>
+                    <SelectTrigger className="w-full">
+                        <SelectValue placeholder="Tag" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectGroup>
+                            <SelectItem value="long">Long</SelectItem>
+                            <SelectItem value="short">Short</SelectItem>
+                            <SelectItem value="both">Both</SelectItem>
+                        </SelectGroup>
+                    </SelectContent>
+                </Select>
+            </FormControl>
+            <FormMessage />
+        </FormItem>
     );
 };

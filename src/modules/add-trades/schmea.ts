@@ -5,6 +5,8 @@ export const tradeSchema = z.object({
     tag: z.string(),
     entryTime: z.string(),
     exitTime: z.string(),
+    entryDate: z.date(),
+    exitDate: z.date(),
     entryPrice: z.number(),
     exitPrice: z.number(),
     tradeStatus: z.string(),

@@ -16,6 +16,8 @@ export const trade = pgTable("trade", {
     tag: TradeTag(),
     entryTime: varchar({ length: 30 }),
     exitTime: varchar({ length: 30 }),
+    entryDate: varchar({ length: 30 }),
+    exitDate: varchar({ length: 30 }),
     entryPrice: integer(),
     exitPrice: integer(),
     tradeStatus: TradeStatus(),
