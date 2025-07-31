@@ -1,8 +1,5 @@
 import { symbolsPairs } from "@/db/schema";
-import { trpc } from "@/trpc/client";
 import { baseProcedure, createTRPCRouter } from "@/trpc/init";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 export const symbolPairProcedure = createTRPCRouter({

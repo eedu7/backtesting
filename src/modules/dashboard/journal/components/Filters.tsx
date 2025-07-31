@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { FilterCard } from "@/modules/dashboard/journal/components/FilterCard";
 import { tradeDurations, tradeSides, tradeSymbolPairs, tradeTags } from "@/modules/dashboard/journal/constants";
-import { Calendar, Funnel, Plus, Trash } from "lucide-react";
+import { Calendar, CandlestickChart, Funnel, Trash } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 
@@ -66,7 +66,7 @@ export const Filters = () => {
                         className="w-full"
                     >
                         <div className="flex w-full items-center gap-1 md:gap-2">
-                            <Plus />
+                            <CandlestickChart />
                             <span className="text-xs md:text-sm">Add Trade</span>
                         </div>
                     </Button>

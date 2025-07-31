@@ -1,6 +1,6 @@
 {
-  "id": "10477100-7d81-45f1-9aab-027275bb619b",
-  "prevId": "1df80c0b-5fda-4aac-89f4-8fb37fe3f74c",
+  "id": "05490bc1-ae2a-4b92-9d50-dcb6c7f1fbc0",
+  "prevId": "c1b23d5c-18b1-451b-a4b7-2beecb6cd78c",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -61,6 +61,12 @@
             "cycle": false
           }
         },
+        "clerkUserID": {
+          "name": "clerkUserID",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
         "symbol": {
           "name": "symbol",
           "type": "varchar(20)",
@@ -74,95 +80,107 @@
           "primaryKey": false,
           "notNull": false
         },
-        "entry_time": {
-          "name": "entry_time",
+        "entryTime": {
+          "name": "entryTime",
           "type": "varchar(30)",
           "primaryKey": false,
           "notNull": false
         },
-        "exit_time": {
-          "name": "exit_time",
+        "exitTime": {
+          "name": "exitTime",
           "type": "varchar(30)",
           "primaryKey": false,
           "notNull": false
         },
-        "entry_price": {
-          "name": "entry_price",
+        "entryDate": {
+          "name": "entryDate",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "exitDate": {
+          "name": "exitDate",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "entryPrice": {
+          "name": "entryPrice",
           "type": "integer",
           "primaryKey": false,
           "notNull": false
         },
-        "exit_price": {
-          "name": "exit_price",
+        "exitPrice": {
+          "name": "exitPrice",
           "type": "integer",
           "primaryKey": false,
           "notNull": false
         },
-        "trade_status": {
-          "name": "trade_status",
+        "tradeStatus": {
+          "name": "tradeStatus",
           "type": "tradeStatus",
           "typeSchema": "public",
           "primaryKey": false,
           "notNull": false
         },
-        "risk_to_reward": {
-          "name": "risk_to_reward",
+        "riskToReward": {
+          "name": "riskToReward",
           "type": "integer",
           "primaryKey": false,
           "notNull": false
         },
-        "actual_risk_to_reward": {
-          "name": "actual_risk_to_reward",
+        "actualRiskToReward": {
+          "name": "actualRiskToReward",
           "type": "integer",
           "primaryKey": false,
           "notNull": false
         },
-        "risk_to_trade": {
-          "name": "risk_to_trade",
+        "riskToTrade": {
+          "name": "riskToTrade",
           "type": "integer",
           "primaryKey": false,
           "notNull": false
         },
-        "profit_loss": {
-          "name": "profit_loss",
+        "profitNLoss": {
+          "name": "profitNLoss",
           "type": "integer",
           "primaryKey": false,
           "notNull": false
         },
-        "trade_grade": {
-          "name": "trade_grade",
+        "tradeGrade": {
+          "name": "tradeGrade",
           "type": "tradeGrade",
           "typeSchema": "public",
           "primaryKey": false,
           "notNull": false
         },
-        "news_day": {
-          "name": "news_day",
+        "newsDay": {
+          "name": "newsDay",
           "type": "boolean",
           "primaryKey": false,
           "notNull": false,
           "default": false
         },
-        "impact_of_news_day": {
-          "name": "impact_of_news_day",
-          "type": "integer",
+        "impactOfNewsDay": {
+          "name": "impactOfNewsDay",
+          "type": "varchar(20)",
           "primaryKey": false,
           "notNull": false
         },
-        "mistake": {
-          "name": "mistake",
+        "mistakeDescription": {
+          "name": "mistakeDescription",
           "type": "text",
           "primaryKey": false,
           "notNull": false
         },
-        "strategy_description": {
-          "name": "strategy_description",
+        "strategyDescription": {
+          "name": "strategyDescription",
           "type": "text",
           "primaryKey": false,
           "notNull": false
         },
-        "learning_description": {
-          "name": "learning_description",
+        "learningDescription": {
+          "name": "learningDescription",
           "type": "text",
           "primaryKey": false,
           "notNull": false
