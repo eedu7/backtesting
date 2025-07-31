@@ -6,10 +6,12 @@ import NewsDaySwitchInput from "@/modules/add-trades/components/NewsDaySwitchInp
 import { SymbolPairInput } from "@/modules/add-trades/components/SymbolPairInput";
 import { TagInput } from "@/modules/add-trades/components/TagInput";
 import { tradeSchema } from "@/modules/add-trades/schmea";
+import { trpc } from "@/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
 import { ChevronDownIcon } from "lucide-react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import { z } from "zod";
 
 import { Button } from "@/components/ui/button";
@@ -33,19 +35,19 @@ export default function AddTradesPage() {
         resolver: zodResolver(tradeSchema),
         defaultValues: {
             symbol: "",
-            tag: "",
+            tag: "long",
             entryTime: "",
             exitTime: "",
             entryDate: today,
             exitDate: today,
             entryPrice: 0,
             exitPrice: 0,
-            tradeStatus: "",
+            tradeStatus: "win",
             riskToReward: 0,
             actualRiskToReward: 0,
             riskToTrade: 0,
             profitNLoss: 0,
-            tradeGrade: "",
+            tradeGrade: "A",
             newsDay: false,
             impactOfNewsDay: "",
             mistakeDescription: "",
@@ -54,17 +56,22 @@ export default function AddTradesPage() {
         },
     });
 
+    const addMutation = trpc.trade.add.useMutation({
+        onSuccess: (data) => {
+            toast.success("Trade added successfully!");
+        },
+        onError: (error) => {
+            toast.error("Error adding trade: " + error.message);
+        },
+    });
+
     const onSubmit = (data: z.infer<typeof tradeSchema>) => {
-        alert("Form is submitted with the following data:");
-        alert(JSON.stringify(data, null, 2));
+        addMutation.mutate(data);
     };
 
     const [open, setOpen] = React.useState(false);
 
-    const [date, setDate] = React.useState<Date | undefined>(undefined);
-
     const [entryOpen, setEntryOpen] = React.useState(false);
-    const [entryDate, setEntryDate] = React.useState<Date | undefined>(undefined);
 
     return (
         <div className="flex min-h-screen items-center justify-center">
@@ -460,8 +467,11 @@ export default function AddTradesPage() {
                             <Button
                                 type="submit"
                                 className="w-full cursor-pointer"
+                                disabled={
+                                    addMutation.isPending || form.formState.isSubmitting || !form.formState.isValid
+                                }
                             >
-                                Add Trade
+                                {addMutation.isPending || form.formState.isSubmitting ? "Adding..." : "Add Trade"}
                             </Button>
                         </CardFooter>
                     </form>
