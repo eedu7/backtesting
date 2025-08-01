@@ -16,6 +16,11 @@ export function TradeDataTable<TData, TValue>({ columns, data }: DataTableProps<
         columns,
         getCoreRowModel: getCoreRowModel(),
         getPaginationRowModel: getPaginationRowModel(),
+        initialState: {
+            pagination: {
+                pageSize: 12,
+            },
+        },
     });
 
     return (
