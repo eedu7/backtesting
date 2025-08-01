@@ -8,10 +8,10 @@ export const CardSkeleton = () => {
         <Card>
             <CardHeader>
                 <CardTitle>
-                    <Skeleton className="h-8 w-20 lg:w-52" />
+                    <Skeleton className="h-8 w-8/12" />
                 </CardTitle>
                 <CardDescription>
-                    <Skeleton className="h-6 w-24 lg:w-72" />
+                    <Skeleton className="h-6 w-10/12" />
                 </CardDescription>
             </CardHeader>
             <CardContent className="flex-1">

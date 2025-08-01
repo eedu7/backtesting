@@ -2,7 +2,7 @@ export const TradeTags = ["long", "short", "both"];
 export const TradeStatus = ["win", "loss", "none"];
 export const TradeGrade = ["A", "B", "C", "D", "E"];
 
-export async function getTradeData() {
+export function getTradeData() {
     return [
         {
             symbol: "AAPL",

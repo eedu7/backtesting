@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { Merriweather } from "next/font/google";
 
@@ -7,7 +9,7 @@ import { ProfitFactorCard } from "@/modules/trades/components/ProfitFactorCard";
 import { TradeColumns } from "@/modules/trades/components/tradeTable/TradeColumns";
 import { TradeDataTable } from "@/modules/trades/components/tradeTable/TradeDataTable";
 import { TradeWinPercentageCard } from "@/modules/trades/components/TradeWinPercentageCard";
-import { getTradeData } from "@/modules/trades/trades.constants";
+import { trpc } from "@/trpc/client";
 
 import { cn } from "@/lib/utils";
 
@@ -17,8 +19,8 @@ const merriweather = Merriweather({
     variable: "--font-merriweather",
 });
 // TODO: Make it mobile friendly
-export const TradePageView = async () => {
-    const data = await getTradeData();
+export const TradePageView = () => {
+    const dbData = trpc.trade.getMany.useQuery();
 
     return (
         <div className="space-y-4 p-2 xl:p-4">
@@ -31,7 +33,7 @@ export const TradePageView = async () => {
             </div>
             <TradeDataTable
                 columns={TradeColumns}
-                data={data}
+                data={dbData.data ?? []}
             />
         </div>
     );
