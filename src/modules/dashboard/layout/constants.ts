@@ -1,17 +1,4 @@
-import {
-    BarChart3,
-    BrainCog,
-    CandlestickChart,
-    ClipboardList,
-    LayoutDashboard,
-    ListMusic,
-    LucideIcon,
-    Notebook,
-    PlusCircle,
-    RefreshCw,
-    Search,
-    Settings,
-} from "lucide-react";
+import { CandlestickChart, LayoutDashboard, LucideIcon, Notebook, PlusCircle, Settings } from "lucide-react";
 
 type Item = {
     title: string;
@@ -25,8 +12,7 @@ export const sidebarItems: Item[] = [
         title: "Dashboard",
         url: "/dashboard",
         icon: LayoutDashboard,
-    },
-    // {
+    }, // {
     //     title: "Reports",
     //     url: "/dashboard/reports",
     //     disable: true,
@@ -41,8 +27,7 @@ export const sidebarItems: Item[] = [
         title: "Trades",
         url: "/dashboard/trades",
         icon: CandlestickChart,
-    },
-    // {
+    }, // {
     //     title: "Playlists",
     //     url: "/dashboard/playlists",
     //     icon: ListMusic,

@@ -25,12 +25,6 @@ import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
 
 export default function AddTradesPage() {
-    function getDate() {
-        return new Date();
-    }
-
-    const today = getDate();
-
     const form = useForm<z.infer<typeof tradeSchema>>({
         resolver: zodResolver(tradeSchema),
         defaultValues: {

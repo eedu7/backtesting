@@ -3,7 +3,6 @@
 import { useId } from "react";
 
 import { FormControl, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 
 interface NewsDaySwitchInputProps {

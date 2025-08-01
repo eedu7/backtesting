@@ -1,7 +1,13 @@
 import React from "react";
 import { Merriweather } from "next/font/google";
 
-import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { AvgWinNLossTrades } from "@/modules/trades/components/AvgWinNLossTrades";
+import { NETPNLCard } from "@/modules/trades/components/NETPNLCard";
+import { ProfitFactorCard } from "@/modules/trades/components/ProfitFactorCard";
+import { TradeColumns } from "@/modules/trades/components/tradeTable/TradeColumns";
+import { TradeDataTable } from "@/modules/trades/components/tradeTable/TradeDataTable";
+import { TradeWinPercentageCard } from "@/modules/trades/components/TradeWinPercentageCard";
+import { getTradeData } from "@/modules/trades/trades.constants";
 
 import { cn } from "@/lib/utils";
 
@@ -10,8 +16,10 @@ const merriweather = Merriweather({
     weight: ["400"],
     variable: "--font-merriweather",
 });
-// TODO: Design not made friendly for mobile users
-export const TradePageView = () => {
+// TODO: Make it mobile friendly
+export const TradePageView = async () => {
+    const data = await getTradeData();
+
     return (
         <div className="space-y-4 p-2 xl:p-4">
             <h1 className={cn("text-bold px-2 py-2 text-xl xl:px-4", merriweather.className)}>Trade Logs</h1>
@@ -21,54 +29,10 @@ export const TradePageView = () => {
                 <TradeWinPercentageCard />
                 <AvgWinNLossTrades />
             </div>
+            <TradeDataTable
+                columns={TradeColumns}
+                data={data}
+            />
         </div>
-    );
-};
-
-export const NETPNLCard = () => {
-    // TODO: Add a line chart
-    return (
-        <Card>
-            <CardHeader>
-                <CardDescription>Net Accumulative P&L</CardDescription>
-                <CardTitle className="text-xl">$2,386.88</CardTitle>
-            </CardHeader>
-        </Card>
-    );
-};
-
-export const ProfitFactorCard = () => {
-    // TODO: Add a donut chart
-    return (
-        <Card>
-            <CardHeader>
-                <CardDescription>Profit Factor</CardDescription>
-                <CardTitle>1.61</CardTitle>
-            </CardHeader>
-        </Card>
-    );
-};
-
-export const TradeWinPercentageCard = () => {
-    // TODO: Add a Half Circle type of Chart
-    return (
-        <Card>
-            <CardHeader>
-                <CardDescription>Trade Win %</CardDescription>
-                <CardTitle>33.33%</CardTitle>
-            </CardHeader>
-        </Card>
-    );
-};
-
-export const AvgWinNLossTrades = () => {
-    // TODO: Add a range chart
-    return (
-        <Card>
-            <CardHeader>
-                <CardDescription>Avg win/loss trade</CardDescription>
-                <CardTitle>3.21</CardTitle>
-            </CardHeader>
-        </Card>
     );
 };

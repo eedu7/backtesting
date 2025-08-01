@@ -1,13 +1,13 @@
 import { TradeGrade, TradeStatus, TradeTags } from "@/modules/trades/trades.constants";
 import { z } from "zod";
 
-export const tradeSchema = z.object({
+export const TradeSchema = z.object({
     symbol: z.string(),
     tag: z.enum(TradeTags),
     entryTime: z.string(),
     exitTime: z.string(),
-    entryDate: z.preprocess((val: Date) => new Date(val), z.date()),
-    exitDate: z.preprocess((val: Date) => new Date(val), z.date()),
+    entryDate: z.date(),
+    exitDate: z.date(),
     entryPrice: z.number(),
     exitPrice: z.number(),
     tradeStatus: z.enum(TradeStatus),
