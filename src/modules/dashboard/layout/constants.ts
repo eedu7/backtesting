@@ -1,6 +1,7 @@
 import {
     BarChart3,
     BrainCog,
+    CandlestickChart,
     ClipboardList,
     LayoutDashboard,
     ListMusic,
@@ -36,12 +37,11 @@ export const sidebarItems: Item[] = [
         url: "/dashboard/journal",
         icon: Notebook,
     },
-    // {
-    //     title: "Trades",
-    //     url: "/dashboard/trades",
-    //     icon: Search,
-    //     disable: true,
-    // },
+    {
+        title: "Trades",
+        url: "/dashboard/trades",
+        icon: CandlestickChart,
+    },
     // {
     //     title: "Playlists",
     //     url: "/dashboard/playlists",

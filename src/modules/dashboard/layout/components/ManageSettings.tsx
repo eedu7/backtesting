@@ -15,10 +15,7 @@ import {
 
 export const ManageSettings = () => {
     return (
-        <Collapsible
-            defaultOpen
-            className="group/collapsible"
-        >
+        <Collapsible className="group/collapsible">
             <SidebarGroup>
                 <SidebarGroupLabel asChild>
                     <CollapsibleTrigger>
